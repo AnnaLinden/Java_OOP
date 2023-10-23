@@ -61,24 +61,24 @@ class MathOperationsTask {
     static void performOperations() {
         Scanner scanner = new Scanner(System.in);
 
-        // System.out.println("Give the first number:");
-        // int first = Integer.parseInt(scanner.nextLine());
+        System.out.println("Give the first number:");
+        int first = Integer.parseInt(scanner.nextLine());
 
-        // System.out.println("Give the second number:");
-        // int second = Integer.parseInt(scanner.nextLine());
+        System.out.println("Give the second number:");
+        int second = Integer.parseInt(scanner.nextLine());
 
-        // System.out.println("Give the third number:");
-        // int third = Integer.parseInt(scanner.nextLine());
+        System.out.println("Give the third number:");
+        int third = Integer.parseInt(scanner.nextLine());
 
         // Alternative solution
-        String input1 = JOptionPane.showInputDialog("Give the first number:");
-        int first = Integer.parseInt(input1);
+        // String input1 = JOptionPane.showInputDialog("Give the first number:");
+        // int first = Integer.parseInt(input1);
 
-        String input2 = JOptionPane.showInputDialog("Give the second number:");
-        int second = Integer.parseInt(input2);
+        // String input2 = JOptionPane.showInputDialog("Give the second number:");
+        // int second = Integer.parseInt(input2);
 
-        String input3 = JOptionPane.showInputDialog("Give the third number:");
-        int third = Integer.parseInt(input3);
+        // String input3 = JOptionPane.showInputDialog("Give the third number:");
+        // int third = Integer.parseInt(input3);
 
         int sum = first + second + third;
         int product = first * second * third;
@@ -88,11 +88,12 @@ class MathOperationsTask {
         System.out.println("The product of the numbers is " + product);
         System.out.println("The average of the numbers is " + average);
 
-        String output = "The sum of the numbers is " + sum +
-                "\nThe product of the numbers is " + product +
-                "\nThe average of the numbers is " + average;
+        // Alternative output
+        // String output = "The sum of the numbers is " + sum +
+        // "\nThe product of the numbers is " + product +
+        // "\nThe average of the numbers is " + average;
 
-        JOptionPane.showMessageDialog(null, output);
+        // JOptionPane.showMessageDialog(null, output);
 
         scanner.close(); // close the scanner
     }

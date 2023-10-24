@@ -14,14 +14,23 @@ public class MultiplicationExam {
                 int num1 = random.nextInt(10) + 1;
                 int num2 = random.nextInt(10) + 1;
 
-                System.out.println("What is " + num1 + " x " + num2 + "?");
-                int answer = scanner.nextInt();
+                System.out.println("What is " + num1 + " x " + num2 + "? (Press Q and then ENTER to exit)");
+                if (scanner.hasNextInt()) {
+                    int answer = scanner.nextInt();
 
-                if (answer == num1 * num2) {
-                    System.out.println("Correct!");
-                    score++;
+                    if (answer == num1 * num2) {
+                        System.out.println("Correct!");
+                        score++;
+                    } else {
+                        System.out.println("Wrong. The correct answer is " + (num1 * num2));
+                    }
                 } else {
-                    System.out.println("Wrong. The correct answer is " + (num1 * num2));
+                    String input = scanner.nextLine().trim();
+                    if (input.equals("q") || input.equals("Q")) {
+                        System.out.println("Exiting exam...");
+                        return;
+                    }
+                    System.out.println("Invalid input. Please enter a number or press SPACE and then ENTER to exit.");
                 }
             }
             if (score == 10) {

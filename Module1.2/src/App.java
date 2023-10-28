@@ -11,16 +11,18 @@ public class App {
         do {
             System.out.println("Enter the number of activity you would like to run: 1-3. Or enter 0 to exit.");
             activity = scanner.nextInt();
-            scanner.nextLine(); // consume the newline
             switch (activity) {
                 case 1:
                     convertFahrenheitToCelsius();
+                    printSeparator();
                     break;
                 case 2:
                     calculateHypotenuse();
+                    printSeparator();
                     break;
                 case 3:
                     convertGramsToMedievalUnits();
+                    printSeparator();
                     break;
                 default:
                     if (activity != 0) {
@@ -34,6 +36,9 @@ public class App {
     // Fahrenheit to Celsius Converter Write a program that prompts the user to
     // enter a temperature in Fahrenheit and converts it to Celsius. Display the
     // converted temperature on the console with one decimal place.
+    static void printSeparator() {
+        System.out.println("_".repeat(50));
+    }
 
     static void convertFahrenheitToCelsius() {
         Scanner scanner = new Scanner(System.in);

@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class App {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in); // create a scanner object only once
+        Scanner scanner = new Scanner(System.in); // Create a Scanner object
         int activity;
 
         do {

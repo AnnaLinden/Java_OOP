@@ -1,6 +1,11 @@
 import java.util.Scanner;
 
 // 11111 -> 31
+// Write a program that prompts the user to enter a binary number 
+// (composed of 0s and 1s) and converts it to decimal. Display the decimal 
+// equivalent on the console. Hint: use the charAt method of the String class
+// to retrieve the individual bits in the input string.
+
 public class BinaryToDecimal {
 
     public static void main(String[] args) {
@@ -19,7 +24,7 @@ public class BinaryToDecimal {
         for (int i = 0; i < length; i++) {
             char bit = binary.charAt(i);
             if (bit == '1') {
-                decimal += Math.pow(2, length - 1 - i);
+                decimal += Math.pow(2, length - 1 - i); //
             } else if (bit != '0') {
                 System.out.println("Invalid binary input!");
                 return;

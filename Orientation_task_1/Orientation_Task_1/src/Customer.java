@@ -39,6 +39,11 @@ public class Customer {
         this.endTime = endTime;
     }
 
+    // Get customer id
+    public int getId() {
+        return id;
+    }
+
     // Calculate duration
     public long duration() {
         return endTime - startTime;

@@ -1,5 +1,5 @@
 /*
-/*
+/* Orientation 1.3
  * (P) Write the Customer class. The customer has an id (int), a start time (long),
  * an end time (long), methods to handle them (getters and setters), and a method 
  * to find out the time spent (end time-start time).

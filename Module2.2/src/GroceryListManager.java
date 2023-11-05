@@ -1,32 +1,48 @@
-//Task 2: Total Cost Calculation
 
+// Task 3: Categorizing Items
 /*
- * Modify the GroceryListManager class to store both the item 
- * name and its corresponding cost as a pair (e.g., using a 
- * HashMap<String, Double>). Add the following methods:
-
-addItem(String item, double cost): This method should add the given 
-                                    item and its cost to the grocery list.
-calculateTotalCost(): This method should calculate and 
-                        return the total cost of all items in the grocery list.
+ * Enhance the GroceryListManager class to support categorizing items. Each item
+ * should belong to a category (e.g., "Fruits", "Dairy", "Bakery"). Add the
+ * following methods:
+ * 
+ * addItemWithCategory(String item, String category): This method should add the
+ * given item to the grocery list along with its category.
+ * displayByCategory(String category): This method should display all items in
+ * the specified category.
  */
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class GroceryListManager {
-    private HashMap<String, Double> groceryList = new HashMap<>();
+    // Inner class to hold item details
+    private static class ItemDetails {
+        double cost;
+        String category;
 
-    // Method to add an item with its cost to the list
-    public void addItem(String item, double cost) {
+        ItemDetails(double cost, String category) {
+            this.cost = cost;
+            this.category = category;
+        }
+
+        @Override
+        public String toString() {
+            return "Cost: $" + String.format("%.2f", cost) + ", Category: " + category;
+        }
+    }
+
+    // HashMap to hold the items with their details
+    private HashMap<String, ItemDetails> groceryList = new HashMap<>();
+
+    // Method to add an item with its cost and category
+    public void addItemWithCategory(String item, double cost, String category) {
         if (!groceryList.containsKey(item)) {
-            groceryList.put(item, cost);
+            groceryList.put(item, new ItemDetails(cost, category));
         } else {
             System.out.println("Item already exists in the list.");
         }
     }
 
-    // Method to remove an item from the list
+    // Method to remove an item
     public void removeItem(String item) {
         if (groceryList.containsKey(item)) {
             groceryList.remove(item);
@@ -35,59 +51,155 @@ public class GroceryListManager {
         }
     }
 
-    // Method to display all items and their costs in the list
-    public void displayList() {
-        System.out.println("You have " + groceryList.size() + " items in your grocery list.");
-        System.out.println("Grocery List:");
-        int i = 1;
-        for (Map.Entry<String, Double> entry : groceryList.entrySet()) {
-            System.out.println(i++ + ". " + entry.getKey() + " - $" + entry.getValue());
+    // Method to display items by category
+    public void displayByCategory(String category) {
+        System.out.println("Items in category '" + category + "':");
+        boolean categoryExists = false;
+        for (Map.Entry<String, ItemDetails> entry : groceryList.entrySet()) {
+            if (entry.getValue().category.equalsIgnoreCase(category)) {
+                System.out.println(entry.getKey() + " - " + entry.getValue());
+                categoryExists = true;
+            }
+        }
+        if (!categoryExists) {
+            System.out.println("No items found in this category.");
         }
     }
 
-    // Method to check if an item is in the list
-    public boolean checkItem(String item) {
-        return groceryList.containsKey(item);
-    }
-
-    // Method to calculate the total cost of all items in the list
-    public double calculateTotalCost() {
+    // Method to calculate total cost of the items
+    public void calculateTotalCost() {
         double totalCost = 0;
-        for (double cost : groceryList.values()) {
-            totalCost += cost;
+        for (ItemDetails details : groceryList.values()) {
+            totalCost += details.cost;
         }
-        return totalCost;
+        System.out.printf("Total cost: $%.2f%n", totalCost);
     }
 
+    // Main method for demonstration
     public static void main(String[] args) {
         GroceryListManager manager = new GroceryListManager();
 
-        // Add items to the list with their costs
-        manager.addItem("Apples", 1.50);
-        manager.addItem("Milk", 0.99);
-        manager.addItem("Bread", 2.50);
+        // Add items with category and cost
+        manager.addItemWithCategory("Apples", 1.50, "Fruits");
+        manager.addItemWithCategory("Bananas", 1.20, "Fruits");
+        manager.addItemWithCategory("Milk", 0.99, "Dairy");
+        manager.addItemWithCategory("Bread", 2.50, "Bakery");
 
-        // Display the list
-        manager.displayList();
+        // Display items by category
+        System.out.println("Displaying items by category:");
+        manager.displayByCategory("Fruits");
+        manager.displayByCategory("Dairy");
+        manager.displayByCategory("Bakery");
 
         // Calculate and display the total cost
-        System.out.println("\nTotal Cost: $" + manager.calculateTotalCost());
+        manager.calculateTotalCost();
 
-        // Check for "Milk" in the list
-        System.out.println("\nIs \"Milk\" in the grocery list? " + manager.checkItem("Milk"));
+        // Remove an item and display the list again
+        System.out.println("\nRemoving 'Bananas' from the list...");
+        manager.removeItem("Bananas");
+        manager.displayByCategory("Fruits");
 
-        // Remove "Milk" from the list
-        System.out.println("\nRemoving \"Milk\" from the list...");
-        manager.removeItem("Milk");
-
-        // Display the updated list
-        manager.displayList();
-
-        // Display the updated total cost
-        System.out.println("\nUpdated Total Cost: $" + manager.calculateTotalCost());
+        // Display the total cost after removing an item
+        manager.calculateTotalCost();
     }
 }
 
+// ___________________________________________________________________________________________
+// Task 2: Total Cost Calculation
+
+/*
+ * Modify the GroceryListManager class to store both the item
+ * name and its corresponding cost as a pair (e.g., using a
+ * HashMap<String, Double>). Add the following methods:
+ * 
+ * addItem(String item, double cost): This method should add the given
+ * item and its cost to the grocery list.
+ * calculateTotalCost(): This method should calculate and
+ * return the total cost of all items in the grocery list.
+ */
+/*
+ * import java.util.HashMap;
+ * import java.util.Map;
+ * 
+ * public class GroceryListManager {
+ * private HashMap<String, Double> groceryList = new HashMap<>();
+ * 
+ * // Method to add an item with its cost to the list
+ * public void addItem(String item, double cost) {
+ * if (!groceryList.containsKey(item)) {
+ * groceryList.put(item, cost);
+ * } else {
+ * System.out.println("Item already exists in the list.");
+ * }
+ * }
+ * 
+ * // Method to remove an item from the list
+ * public void removeItem(String item) {
+ * if (groceryList.containsKey(item)) {
+ * groceryList.remove(item);
+ * } else {
+ * System.out.println("Cannot remove " + item +
+ * " - item not found in the list.");
+ * }
+ * }
+ * 
+ * // Method to display all items and their costs in the list
+ * public void displayList() {
+ * System.out.println("You have " + groceryList.size() +
+ * " items in your grocery list.");
+ * System.out.println("Grocery List:");
+ * int i = 1;
+ * for (Map.Entry<String, Double> entry : groceryList.entrySet()) {
+ * System.out.println(i++ + ". " + entry.getKey() + " - $" + entry.getValue());
+ * }
+ * }
+ * 
+ * // Method to check if an item is in the list
+ * public boolean checkItem(String item) {
+ * return groceryList.containsKey(item);
+ * }
+ * 
+ * // Method to calculate the total cost of all items in the list
+ * public double calculateTotalCost() {
+ * double totalCost = 0;
+ * for (double cost : groceryList.values()) {
+ * totalCost += cost;
+ * }
+ * return totalCost;
+ * }
+ * 
+ * public static void main(String[] args) {
+ * GroceryListManager manager = new GroceryListManager();
+ * 
+ * // Add items to the list with their costs
+ * manager.addItem("Apples", 1.50);
+ * manager.addItem("Milk", 0.99);
+ * manager.addItem("Bread", 2.50);
+ * 
+ * // Display the list
+ * manager.displayList();
+ * 
+ * // Calculate and display the total cost
+ * System.out.println("\nTotal Cost: $" + manager.calculateTotalCost());
+ * 
+ * // Check for "Milk" in the list
+ * System.out.println("\nIs \"Milk\" in the grocery list? " +
+ * manager.checkItem("Milk"));
+ * 
+ * // Remove "Milk" from the list
+ * System.out.println("\nRemoving \"Milk\" from the list...");
+ * manager.removeItem("Milk");
+ * 
+ * // Display the updated list
+ * manager.displayList();
+ * 
+ * // Display the updated total cost
+ * System.out.println("\nUpdated Total Cost: $" + manager.calculateTotalCost());
+ * }
+ * }
+ */
+
+// ___________________________________________________________________________________________
 // Task 1
 // import java.util.ArrayList;
 

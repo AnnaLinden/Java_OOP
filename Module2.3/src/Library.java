@@ -39,7 +39,7 @@ public class Library {
         users.put(user.getName(), user);
     }
 
-    // Modify the borrowBook method to require a user's name
+    // Modified borrowBook method to require a user's name
     public void borrowBook(String title, String userName) {
         User user = users.get(userName);
         if (user == null) {

@@ -38,5 +38,13 @@ public class LibraryMain {
         // Search for books by a specific author and display the results.
         library.findBookByAuthor("Jane Doe");
 
+        // Borrow a book
+        // library.borrowBook("Data Structures and Algorithms");
+        // library.displayBooks();
+
+        // is available
+        // System.out.println(library.isBookAvailable("Data Structures and
+        // Algorithms"));
+
     }
 }

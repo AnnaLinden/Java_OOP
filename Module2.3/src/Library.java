@@ -51,4 +51,18 @@ public class Library {
         System.out.println("You have returned " + book.getTitle());
     }
 
+    // Add a method to the Library class to check the availability of a specific
+    // book by its title:
+    // isBookAvailable(String title): This method should return a boolean indicating
+    // whether the book with the specified title is available in the library.
+
+    public boolean isBookAvailable(String title) {
+        for (Book book : books) {
+            if (book.getTitle().equals(title)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

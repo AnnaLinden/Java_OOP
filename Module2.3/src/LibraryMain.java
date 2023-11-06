@@ -24,6 +24,16 @@ public class LibraryMain {
         Book book2 = new Book("Data Structures and Algorithms", "Jane Doe", 2018);
         Book book3 = new Book("The Art of Fiction", "Alice Johnson", 2019);
 
+        // Set ratings for the books
+        book1.setRating(4.5);
+        book2.setRating(4.0);
+        book3.setRating(4.8);
+
+        // Add reviews to the books
+        book1.addReview("Very informative and well-structured.");
+        book1.addReview("Excellent for beginners.");
+        book2.addReview("Comprehensive and concise.");
+
         // Create an instance of Library.
         Library library = new Library();
 
@@ -55,5 +65,14 @@ public class LibraryMain {
 
         // get reviews
         System.out.println(book1.getReviews());
+
+        // Test the getAverageBookRating method
+        double averageRating = library.getAverageBookRating();
+        System.out.println("Average Book Rating: " + averageRating);
+
+        // Test the getMostReviewedBook method
+        Book mostReviewedBook = library.getMostReviewedBook();
+        System.out.println("Most Reviewed Book: " + mostReviewedBook.getTitle() +
+                " with " + mostReviewedBook.getReviews().size() + " reviews.");
     }
 }

@@ -65,4 +65,39 @@ public class Library {
         return false;
     }
 
+    // Method to calculate the average book rating
+    public double getAverageBookRating() {
+        if (books.isEmpty()) {
+            return 0.0; // Handle case with no books
+        }
+
+        double totalRating = 0.0;
+        int ratedBooksCount = 0;
+
+        for (Book book : books) {
+            if (book.getRating() > 0) { // Assuming unrated books have a rating of 0
+                totalRating += book.getRating();
+                ratedBooksCount++;
+            }
+        }
+
+        return ratedBooksCount > 0 ? totalRating / ratedBooksCount : 0.0;
+    }
+
+    // Method to find the most reviewed book
+    public Book getMostReviewedBook() {
+        if (books.isEmpty()) {
+            return null; // Handle case with no books
+        }
+
+        Book mostReviewedBook = books.get(0);
+        for (Book book : books) {
+            if (book.getReviews().size() > mostReviewedBook.getReviews().size()) {
+                mostReviewedBook = book;
+            }
+        }
+
+        return mostReviewedBook;
+    }
+
 }

@@ -1,4 +1,3 @@
-import java.sql.Array;
 import java.util.ArrayList;
 
 public class Library {
@@ -13,9 +12,9 @@ public class Library {
     // including their titles, authors, and publication years.
     public void displayBooks() {
         System.out.println("Library Catalog:");
-
+        int i = 1;
         for (Book book : books) {
-            int i = 1;
+
             System.out.println(
                     i + ". Title: " + book.getTitle() + ", Author: " + book.getAuthor() + ", Year: " + book.getYear());
             i++;
@@ -24,10 +23,32 @@ public class Library {
 
     // search and display the details of books written by the specified author.
     public void findBookByAuthor(String author) {
+        System.out.println("Books by Author \"" + author + "\":");
         for (Book book : books) {
             if (book.getAuthor().equals(author)) {
-                System.out.println(book.getTitle() + ", " + book.getAuthor() + ", " + book.getYear());
+                System.out.println("Title: " + book.getTitle() + ", Year: " + book.getYear());
             }
         }
     }
+
+    // borrowBook(String title): This method should simulate a book being borrowed.
+    // It should remove the book from the library's collection if available.
+    public void borrowBook(String title) {
+        for (Book book : books) {
+            if (book.getTitle().equals(title)) {
+                books.remove(book);
+                System.out.println("You have borrowed " + title);
+                return;
+            }
+        }
+        System.out.println("Sorry, " + title + " is not available");
+    }
+
+    // returnBook(Book book): This method should simulate a book being returned
+    // to the library. It should add the book back to the library's collection.
+    public void returnBook(Book book) {
+        books.add(book);
+        System.out.println("You have returned " + book.getTitle());
+    }
+
 }

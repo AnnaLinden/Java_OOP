@@ -1,7 +1,10 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Library {
-    private ArrayList<Book> books = new ArrayList<Book>();
+    private ArrayList<Book> books = new ArrayList<>();
+    private Map<String, User> users = new HashMap<>();
 
     // add the given Book object to the library's collection.
     public void addBook(Book book) {
@@ -31,24 +34,40 @@ public class Library {
         }
     }
 
-    // borrowBook(String title): This method should simulate a book being borrowed.
-    // It should remove the book from the library's collection if available.
-    public void borrowBook(String title) {
+    // Add a user to the library
+    public void addUser(User user) {
+        users.put(user.getName(), user);
+    }
+
+    // Modify the borrowBook method to require a user's name
+    public void borrowBook(String title, String userName) {
+        User user = users.get(userName);
+        if (user == null) {
+            System.out.println("User does not exist in the library system.");
+            return;
+        }
+
         for (Book book : books) {
             if (book.getTitle().equals(title)) {
                 books.remove(book);
-                System.out.println("You have borrowed " + title);
+                user.borrowBook(book);
+                System.out.println(userName + " has borrowed " + title);
                 return;
             }
         }
         System.out.println("Sorry, " + title + " is not available");
     }
 
-    // returnBook(Book book): This method should simulate a book being returned
-    // to the library. It should add the book back to the library's collection.
-    public void returnBook(Book book) {
-        books.add(book);
-        System.out.println("You have returned " + book.getTitle());
+    // Method to return a book to the library
+    public void returnBook(Book book, String userName) {
+        User user = users.get(userName);
+        if (user != null && user.getBorrowedBooks().contains(book)) {
+            user.returnBook(book);
+            books.add(book);
+            System.out.println(userName + " has returned " + book.getTitle());
+        } else {
+            System.out.println("This book does not belong to " + userName);
+        }
     }
 
     // Add a method to the Library class to check the availability of a specific

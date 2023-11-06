@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class LibraryMain {
     /*
      * Create instances of Book representing different books.
@@ -74,5 +76,29 @@ public class LibraryMain {
         Book mostReviewedBook = library.getMostReviewedBook();
         System.out.println("Most Reviewed Book: " + mostReviewedBook.getTitle() +
                 " with " + mostReviewedBook.getReviews().size() + " reviews.");
+
+        // Create users
+        User user1 = new User("Alice", 25, new ArrayList<>());
+        User user2 = new User("Bob", 30, new ArrayList<>());
+
+        // Add users to the library
+        library.addUser(user1);
+        library.addUser(user2);
+
+        // User 1 borrows a book
+        library.borrowBook("Introduction to Java Programming", "Alice");
+        library.borrowBook("Data Structures and Algorithms", "Bob");
+
+        // Check if the book is available after borrowing
+        System.out.println("Is 'Introduction to Java Programming' available? " +
+                library.isBookAvailable("Introduction to Java Programming"));
+
+        // User 1 returns a book
+        library.returnBook(book1, "Alice");
+
+        // Check again if the book is available after returning
+        System.out.println("Is 'Introduction to Java Programming' available after returning? " +
+                library.isBookAvailable("Introduction to Java Programming"));
     }
+
 }

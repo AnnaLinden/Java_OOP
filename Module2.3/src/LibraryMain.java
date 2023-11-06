@@ -46,5 +46,14 @@ public class LibraryMain {
         // System.out.println(library.isBookAvailable("Data Structures and
         // Algorithms"));
 
+        // set rating
+        book1.setRating(4.5);
+        System.out.println(book1.getRating());
+
+        // add review
+        book1.addReview("This book is awesome!");
+
+        // get reviews
+        System.out.println(book1.getReviews());
     }
 }

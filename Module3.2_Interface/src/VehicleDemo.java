@@ -5,6 +5,7 @@ public class VehicleDemo {
         Vehicle car = new Car("My Car");
         car.start();
         car.stop();
+        car.stop();
         System.out.println(car.getInfo() + "\n");
 
         Vehicle motorcycle = new Motorcycle("My Motorcycle", "Sports");

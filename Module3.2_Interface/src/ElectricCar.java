@@ -1,6 +1,9 @@
 public class ElectricCar extends AbstractVehicle implements ElectricVehicle {
-    public ElectricCar(String name) {
+    private double energyConsumption;
+
+    public ElectricCar(String name, double energyConsumption) {
         super(name);
+        this.energyConsumption = energyConsumption;
     }
 
     @Override
@@ -21,5 +24,10 @@ public class ElectricCar extends AbstractVehicle implements ElectricVehicle {
     @Override
     public void charge() {
         System.out.println(getName() + " is charging...");
+    }
+
+    @Override
+    public double calculateFuelEfficiency() {
+        return energyConsumption;
     }
 }

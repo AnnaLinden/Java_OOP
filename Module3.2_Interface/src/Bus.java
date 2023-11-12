@@ -1,9 +1,11 @@
 public class Bus extends AbstractVehicle {
     private int capacity;
+    private double fuelEfficiency;
 
-    public Bus(String name, int capacity) {
+    public Bus(String name, int capacity, double fuelEfficiency) {
         super(name);
         this.capacity = capacity;
+        this.fuelEfficiency = fuelEfficiency;
     }
 
     @Override
@@ -20,5 +22,10 @@ public class Bus extends AbstractVehicle {
     public String getInfo() {
         return "Bus Information:\nType: Bus\nName: " + getName() + "\nFuel: Diesel\nCapacity: " + capacity
                 + " passengers";
+    }
+
+    @Override
+    public double calculateFuelEfficiency() {
+        return fuelEfficiency;
     }
 }

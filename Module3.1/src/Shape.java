@@ -1,9 +1,7 @@
-public class Shape {
+public abstract class Shape {
     // Inside the Shape class, declare a method named calculateArea() that returns
     // the area of the shape. The method should return an area of 0.
-    public double calculateArea() {
-        return 0.0;
-    }
+    public abstract double calculateArea();
 }
 
 // Create three subclasses: Circle, Rectangle, and Triangle, each extending the

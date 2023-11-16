@@ -1,14 +1,18 @@
 public class Event implements Comparable<Event> {
-    private long time; // Represents the event time
+    private EventType type;
+    private long time;
 
-    // Constructor
-    public Event(long time) {
+    public Event(EventType type, long time) {
+        this.type = type;
         this.time = time;
     }
 
-    // Getter for time
     public long getTime() {
         return time;
+    }
+
+    public EventType getType() {
+        return type;
     }
 
     @Override
@@ -18,6 +22,6 @@ public class Event implements Comparable<Event> {
 
     @Override
     public String toString() {
-        return "Event at time: " + time;
+        return "Event [" + type + "] at time: " + time;
     }
 }

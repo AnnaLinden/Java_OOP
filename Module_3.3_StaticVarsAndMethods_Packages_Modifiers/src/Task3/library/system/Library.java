@@ -1,7 +1,7 @@
-package Task2.library.system;
+package Task3.library.system;
 
-import Task2.library.model.Book;
-import Task2.library.model.LibraryMember;
+import Task3.library.model.Book;
+import Task3.library.model.LibraryMember;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,13 +22,24 @@ public class Library {
         members.add(member);
     }
 
-    // borrow and return methods
-    public void borrowBook(LibraryMember member, Book book) {
-        member.borrowBook(book);
+    public void reserveBook(LibraryMember member, Book book) {
+        if (!book.isReserved()) {
+            book.setReserved(true);
+            member.addReservedBook(book);
+        } else {
+            System.out.println(
+                    member.getName() + " tried to reserve " + book.getTitle() + " but it is already reserved.");
+        }
+
     }
 
-    public void returnBook(LibraryMember member, Book book) {
-        member.returnBook(book);
+    public void cancelReservation(LibraryMember member, Book book) {
+        if (book.isReserved() && member.hasReservedBook(book)) {
+            book.setReserved(false);
+            member.removeReservedBook(book);
+        } else {
+            System.out.println("Sorry, " + book.getTitle() + " is not reserved by this member.");
+        }
     }
 
 }

@@ -1,8 +1,8 @@
-package Task2.library;
+package Task3.library;
 
-import Task2.library.model.Book;
-import Task2.library.model.LibraryMember;
-import Task2.library.system.Library;
+import Task3.library.model.Book;
+import Task3.library.model.LibraryMember;
+import Task3.library.system.Library;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,13 +22,16 @@ public class Main {
         library.addMember(member1);
         library.addMember(member2);
 
-        library.borrowBook(member1, book1);
-        library.borrowBook(member1, book2);
-        library.borrowBook(member2, book3);
+        library.reserveBook(member1, book1);
+        library.reserveBook(member1, book2);
+        library.reserveBook(member2, book1);
+        library.reserveBook(member2, book3);
 
-        library.returnBook(member1, book1);
-        library.returnBook(member1, book2);
-        library.returnBook(member2, book3);
+        library.cancelReservation(member1, book1);
+        library.cancelReservation(member1, book2);
+        library.cancelReservation(member2, book1);
+        library.cancelReservation(member2, book3);
+
     }
 
 }

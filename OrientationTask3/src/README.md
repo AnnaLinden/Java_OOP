@@ -1,3 +1,21 @@
+# Task 4
+
+(W) Familiarize yourself with a few distributions that could be used in the simulator for experimentation. These distributions could be used in the following situations. Find answers online. You can also study other distributions. For example, Google "real life example of normal distribution".
+
+## Answer
+
+While researching online, I found a few distributions that could be useful in our simulator:
+
+Normal Distribution: Often called the Gaussian distribution, it's used to represent real-valued random variables whose distributions are not known. It's applicable in a variety of fields like natural and social sciences. A real-life example is human heights. In a population, heights tend to cluster around a central average value with a decrease in frequency as you move away from the mean.
+
+Binomial Distribution: Used when there are exactly two mutually exclusive outcomes of a trial, like success or failure. A real-life example is flipping a coin a certain number of times and counting the number of heads (or tails).
+
+Exponential Distribution: This is used for modeling the time between events in a process where events occur continuously and independently at a constant average rate. A typical example is the amount of time until the next bus arrives at a bus stop.
+
+Poisson Distribution: It's used for modeling the number of times an event occurs in a fixed interval of time or space. An example is the number of phone calls received by a call center per hour.
+
+These distributions can simulate different scenarios in our project, depending on what aspect of real-life we want to replicate or study. The choice of distribution depends on the nature of the data and the specific requirements of the simulation.
+
 # Task 3
 
 (W) Why can't a Singleton object be created from outside the Singleton class using the new operation?

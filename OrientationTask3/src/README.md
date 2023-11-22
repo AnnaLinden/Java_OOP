@@ -1,3 +1,11 @@
+# Task 3
+
+(W) Why can't a Singleton object be created from outside the Singleton class using the new operation?
+
+## Answer
+
+A Singleton object cannot be created from outside the Singleton class using the new operator because the constructor of a Singleton class is made private. This private constructor prevents other classes from directly creating a new instance of the Singleton class. In a Singleton design pattern, only one instance of the class is allowed to exist, and this instance is accessed through a static method within the Singleton class. This method typically checks if an instance already exists; if not, it creates one using the private constructor and returns it. This approach ensures that no other class can bypass the mechanism and create another instance, thereby maintaining the Singleton property of having only one instance throughout the application.
+
 # task 1
 
 (W) Suppose you are compiling statistics on the age structure of students in our group. You should then draw 1000 age values and these should be distributed in the same way as the age distribution of the students in the group. How do you do it? Explain the algorithm in enough details to be able to program it directly. Take an idea/model from the example on section Your own distribution.

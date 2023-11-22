@@ -1,8 +1,11 @@
+
+//Clock.java
 public class Clock {
     private static Clock instance;
     private double clock;
 
-    private Clock() { }
+    private Clock() {
+    }
 
     public static Clock getInstance() {
         if (instance == null)

@@ -1,6 +1,7 @@
+
+//ArrivalProcess.java
 import eduni.distributions.ContinuousGenerator;
 import eduni.distributions.Negexp;
-
 
 /* to add arrival events to the event list */
 public class ArrivalProcess {

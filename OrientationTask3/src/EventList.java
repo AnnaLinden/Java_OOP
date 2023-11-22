@@ -1,3 +1,5 @@
+
+//EventList.java
 import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.Random;
@@ -18,7 +20,8 @@ public class EventList {
         if (evenList.isEmpty())
             return null;
 
-        System.out.println("Removing from the event list " + evenList.peek().getType() + " " + evenList.peek().getTime());
+        System.out
+                .println("Removing from the event list " + evenList.peek().getType() + " " + evenList.peek().getTime());
         return evenList.remove();
     }
 

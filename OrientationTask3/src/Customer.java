@@ -1,3 +1,4 @@
+
 public class Customer {
     private double arrivalTime;
     private double removalTime;
@@ -37,6 +38,6 @@ public class Customer {
     public void reportResults() {
         System.out.println("Customer #" + id + " arrived: " + arrivalTime);
         System.out.println("Customer #" + id + " removed: " + removalTime);
-        System.out.println("Customer #" + id + " stayed:  " + (removalTime-arrivalTime));
+        System.out.println("Customer #" + id + " stayed:  " + (removalTime - arrivalTime));
     }
 }

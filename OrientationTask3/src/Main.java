@@ -1,3 +1,5 @@
+
+//Main.java
 import eduni.distributions.Negexp;
 
 public class Main {
@@ -6,7 +8,8 @@ public class Main {
 
         /* generate events */
         EventList eventList = new EventList();
-        ArrivalProcess arrivalProcess = new ArrivalProcess(new Negexp(10, System.currentTimeMillis()), eventList, EventType.ARR);
+        ArrivalProcess arrivalProcess = new ArrivalProcess(new Negexp(10, System.currentTimeMillis()), eventList,
+                EventType.ARR);
         for (int i = 0; i < 10; i++) {
             Clock.getInstance().setClock(arrivalProcess.generateNextEvent());
         }

@@ -1,3 +1,5 @@
+
+//Event.java
 public class Event implements Comparable<Event> {
     private EventType type;
     private double time;

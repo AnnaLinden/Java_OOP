@@ -56,5 +56,4 @@ private int value;
 }
 ```
 
-// write ecplanation how the code above works
 The code above works by creating a class called Calculator. The class has a private integer variable called value. The class has a constructor that sets the value to 0. The class has a method called clear that sets the value to 0. The class has a method called add that adds an integer to the calculator. The method add throws an exception if the integer is negative. The class has a method called getCurrentValue that returns the value. The class has a main method that creates an instance of the Calculator class and uses it to calculate the sum of a few integers. The main method also catches any exceptions thrown by the add method.

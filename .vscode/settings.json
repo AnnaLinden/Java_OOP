@@ -1,0 +1,8 @@
+{
+  "java.project.sourcePaths": [
+    "oo-metropolia-module-4.1/src",
+    "Module6.1_GUI/src/main/java/com",
+    "Module1.2/src",
+    "Module6.1_GUI/target/classes/com"
+  ]
+}

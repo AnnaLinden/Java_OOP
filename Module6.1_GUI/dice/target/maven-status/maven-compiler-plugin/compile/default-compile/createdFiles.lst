@@ -1,0 +1,5 @@
+dice\Main.class
+dice\view\DiceGUI$1.class
+dice\view\DiceGUI.class
+dice\controller\DiceController.class
+dice\model\Dice.class

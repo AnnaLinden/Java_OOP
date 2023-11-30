@@ -3,7 +3,7 @@ package model;
 public class Currency {
     private String name;
     private String abbreviation;
-    private double rateToUSD; // Example: conversion rate to USD
+    private double rateToUSD;
 
     public Currency(String name, String abbreviation, double rateToUSD) {
         this.name = name;
@@ -34,5 +34,10 @@ public class Currency {
 
     public void setRateToUSD(double rateToUSD) {
         this.rateToUSD = rateToUSD;
+    }
+
+    @Override
+    public String toString() {
+        return abbreviation;
     }
 }

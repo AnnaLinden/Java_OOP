@@ -1,13 +1,16 @@
 package view;
 
+import controller.CurrencyConverterController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Currency;
+import model.CurrencyConverter;
 
 public class CurrencyConverterView extends Application {
+    private CurrencyConverterController controller;
     private ComboBox<Currency> sourceCurrencyBox;
     private ComboBox<Currency> targetCurrencyBox;
     private TextField sourceAmount;
@@ -16,6 +19,7 @@ public class CurrencyConverterView extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+
         VBox layout = new VBox(10);
 
         sourceCurrencyBox = new ComboBox<>();
@@ -29,14 +33,20 @@ public class CurrencyConverterView extends Application {
                 new Label("Amount"), sourceAmount,
                 new Label("Target Currency"), targetCurrencyBox,
                 convertButton,
-                new Label("Converted Amount"), targetAmount
-        );
+                new Label("Converted Amount"), targetAmount);
+
+        // Initialize controller
+        this.controller = new CurrencyConverterController(this, new CurrencyConverter());
+
+        // populate ComboBoxes with currencies
+        controller.initializeCurrencies();
 
         primaryStage.setTitle("Currency Converter");
         primaryStage.setScene(new Scene(layout, 400, 250));
         primaryStage.show();
 
     }
+
     public ComboBox<Currency> getSourceCurrencyBox() {
         return sourceCurrencyBox;
     }
@@ -52,9 +62,11 @@ public class CurrencyConverterView extends Application {
     public TextField getTargetAmount() {
         return targetAmount;
     }
+
     public Button getConvertButton() {
         return convertButton;
     }
+
     public void showError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
@@ -62,4 +74,3 @@ public class CurrencyConverterView extends Application {
         alert.showAndWait();
     }
 }
-

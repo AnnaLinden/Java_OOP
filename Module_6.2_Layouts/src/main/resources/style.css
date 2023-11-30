@@ -1,0 +1,25 @@
+.root {
+    -fx-font-family: 'Arial', sans-serif;
+    -fx-padding: 20;
+    -fx-alignment: center;
+}
+
+.label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.button {
+    -fx-background-color: #0073e6;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.text-field {
+    -fx-padding: 5px;
+}
+
+.combo-box {
+    -fx-padding: 5px;
+}

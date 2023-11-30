@@ -41,8 +41,11 @@ public class CurrencyConverterView extends Application {
         // populate ComboBoxes with currencies
         controller.initializeCurrencies();
 
+        Scene scene = new Scene(layout, 400, 250);
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+
+        primaryStage.setScene(scene);
         primaryStage.setTitle("Currency Converter");
-        primaryStage.setScene(new Scene(layout, 400, 250));
         primaryStage.show();
 
     }

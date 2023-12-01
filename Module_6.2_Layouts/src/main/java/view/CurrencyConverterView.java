@@ -2,9 +2,10 @@ package view;
 
 import controller.CurrencyConverterController;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import model.Currency;
 import model.CurrencyConverter;
@@ -19,8 +20,10 @@ public class CurrencyConverterView extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-
-        VBox layout = new VBox(10);
+        GridPane layout = new GridPane();
+        layout.setVgap(10); // Vertical gap between rows
+        layout.setHgap(10); // Horizontal gap between columns
+        layout.setPadding(new Insets(10, 10, 10, 10)); // Padding around the grid
 
         sourceCurrencyBox = new ComboBox<>();
         targetCurrencyBox = new ComboBox<>();
@@ -28,26 +31,29 @@ public class CurrencyConverterView extends Application {
         targetAmount = new TextField();
         convertButton = new Button("Convert");
 
-        layout.getChildren().addAll(
-                new Label("Source Currency"), sourceCurrencyBox,
-                new Label("Amount"), sourceAmount,
-                new Label("Target Currency"), targetCurrencyBox,
-                convertButton,
-                new Label("Converted Amount"), targetAmount);
+        // Add components to the GridPane
+        layout.add(new Label("Source Currency"), 0, 0);
+        layout.add(sourceCurrencyBox, 1, 0);
+        layout.add(new Label("Amount"), 2, 0);
+        layout.add(sourceAmount, 3, 0);
+        layout.add(new Label("Target Currency"), 0, 1);
+        layout.add(targetCurrencyBox, 1, 1);
+        layout.add(new Label("Converted Amount"), 2, 1);
+        layout.add(targetAmount, 3, 1);
+        layout.add(convertButton, 1, 4); // Spanning across 2 columns
 
         // Initialize controller
         this.controller = new CurrencyConverterController(this, new CurrencyConverter());
 
-        // populate ComboBoxes with currencies
+        // Populate ComboBoxes with currencies
         controller.initializeCurrencies();
 
-        Scene scene = new Scene(layout, 400, 250);
+        Scene scene = new Scene(layout, 600, 250);
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Currency Converter");
         primaryStage.show();
-
     }
 
     public ComboBox<Currency> getSourceCurrencyBox() {

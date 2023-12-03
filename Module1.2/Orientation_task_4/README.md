@@ -114,8 +114,6 @@ flowchart LR
 
 ### Service Points
 
-//format for md
-
 - **Check-in Counter**: Where passengers check in and drop off baggage.
 - **Security Checkpoint**: Screening of passengers and carry-ons.
 - **Boarding Gate**: Waiting area before boarding.

@@ -137,7 +137,7 @@ flowchart LR
     style nowhere4 height:0px;
 ```
 
-## 3.
+## 4. Pseudocode for the main loop of the simulator
 
 Algorithm: Three-Phase Simulator for Shopping Center
 
@@ -171,3 +171,105 @@ Set simulation clock to time of the next scheduled event
 
 // Finalize Simulation
 Compile and output simulation results (e.g., total number of customers processed)
+
+# 5. Simulator Explanation
+
+## a) A-Phase Coding: `SimulationController`
+
+The `SimulationController` class manages the A-phase of the simulation, which involves controlling the simulation clock and determining the timing of events.
+
+### Java/Pseudocode Example:
+
+```java
+public class SimulationController {
+    private PriorityQueue<Event> eventQueue;
+    private double currentTime;
+
+    public SimulationController() {
+        this.eventQueue = new PriorityQueue<>(new EventComparator());
+        this.currentTime = 0;
+    }
+
+    public void runSimulation() {
+        while (!eventQueue.isEmpty()) {
+            Event nextEvent = eventQueue.peek();
+            advanceClockTo(nextEvent.getTime());
+            processEvent(nextEvent);
+        }
+    }
+
+    private void advanceClockTo(double nextEventTime) {
+        currentTime = nextEventTime;
+    }
+
+    private void processEvent(Event event) {
+        // Process the event (B or C type)
+        // Add new events to the queue if necessary
+    }
+}
+```
+
+## b) Coding B-Events: BEventProcessor
+
+The BEventProcessor class is responsible for handling B-events, which are scheduled activities occurring at specific times.
+
+### Java/Pseudocode Example:
+
+```java
+public class BEventProcessor {
+
+    public void processBEvent(Event bEvent, SystemState state) {
+        switch (bEvent.getType()) {
+            case ARRIVAL:
+                // Handle arrival event
+                break;
+            case COMPLETION:
+                // Handle completion event
+                break;
+            // Other B-event types
+        }
+        // Update system state and schedule future events
+    }
+}
+```
+
+## c) Coding C-Events: CEventProcessor
+
+The CEventProcessor class deals with C-events, which are conditional events that depend on the system's current state.
+
+### Java/Pseudocode Example:
+
+```java
+public class CEventProcessor {
+
+    public void processCEvents(SystemState state, SimulationController controller) {
+        while (true) {
+            boolean eventProcessed = false;
+
+            if (conditionForCEvent1(state)) {
+                // Process C-event 1
+                eventProcessed = true;
+            }
+            if (conditionForCEvent2(state)) {
+                // Process C-event 2
+                eventProcessed = true;
+            }
+            // Other C-event conditions
+
+            if (!eventProcessed) {
+                break; // No more C-events can be executed
+            }
+        }
+    }
+
+    private boolean conditionForCEvent1(SystemState state) {
+        // Condition for C-event 1
+        return false; // Placeholder
+    }
+
+    private boolean conditionForCEvent2(SystemState state) {
+        // Condition for C-event 2
+        return false; // Placeholder
+    }
+}
+```

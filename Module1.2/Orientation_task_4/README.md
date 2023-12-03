@@ -136,3 +136,38 @@ flowchart LR
     style nowhere3 height:0px;
     style nowhere4 height:0px;
 ```
+
+## 3.
+
+Algorithm: Three-Phase Simulator for Shopping Center
+
+// Initial Setup
+Initialize simulation clock to 0
+Initialize all queues and service points (router, operator queues) to empty
+Schedule initial B events (e.g., B1 for customer type X, B2 for customer Y)
+
+// Main Simulation Loop
+while simulation is not complete:
+// A-Phase: Advance Clock
+Set simulation clock to time of the next scheduled event
+
+    // B-Phase: Process B-Events
+    while there are B events at the current clock time:
+        Process each B event based on its type
+        Update system state accordingly
+        Schedule future events as needed (e.g., next customer arrival, finish activity)
+        Update statistics if required (e.g., completed work)
+
+    // C-Phase: Process C-Events
+    repeat:
+        Check for any C events whose conditions are met
+        If a C event's condition is met:
+            Process the C event
+            Update system state accordingly
+            Schedule B event for completion of the activity
+    until no more C events can be executed
+
+    // Check for end of simulation (e.g., predetermined run length or number of arrivals)
+
+// Finalize Simulation
+Compile and output simulation results (e.g., total number of customers processed)

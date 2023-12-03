@@ -137,7 +137,7 @@ flowchart LR
     style nowhere4 height:0px;
 ```
 
-## 4. Pseudocode for the main loop of the simulator
+# 4. Pseudocode for the main loop of the simulator
 
 Algorithm: Three-Phase Simulator for Shopping Center
 

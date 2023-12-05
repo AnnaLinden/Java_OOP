@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/../Module_7.2_Database_usage_via_JDBC_driver/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../Module_7.2_Database_usage_via_JDBC_driver/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/database_enhanced_currency_converter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/database_enhanced_currency_converter/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>
 </project>

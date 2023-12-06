@@ -5,12 +5,12 @@ import entity.Currency;
 import entity.CurrencyConverter;
 import UI.CurrencyConverterView;
 import dao.CurrencyDao;
+import dao.CurrencyDao.CurrencyDaoException;
 import java.util.List;
 
 public class CurrencyConverterController {
     private CurrencyConverterView view;
     private CurrencyConverter model;
-
     private CurrencyDao currencyDao;
 
     public CurrencyConverterController(CurrencyConverterView view, CurrencyConverter model) {
@@ -34,21 +34,25 @@ public class CurrencyConverterController {
             double convertedAmount = model.convert(amount, fromCurrency, toCurrency);
             view.getTargetAmount().setText(String.format("%.2f", convertedAmount));
         } catch (NumberFormatException e) {
-            // Handle invalid number format
             view.showError("Invalid number format.");
+        } catch (CurrencyDaoException e) {
+            view.showError("Database error: " + e.getMessage());
         } catch (Exception e) {
-            // Handle other exceptions
-            view.showError("An error occurred: " + e.getMessage());
+            view.showError("An unexpected error occurred: " + e.getMessage());
         }
     }
 
     public void initializeCurrencies() {
-        List<Currency> currencies = currencyDao.getAllCurrencies();
-        if (!currencies.isEmpty()) {
-            view.getSourceCurrencyBox().getItems().addAll(currencies);
-            view.getTargetCurrencyBox().getItems().addAll(currencies);
-        } else {
-            view.showError("Unable to fetch currencies from the database.");
+        try {
+            List<Currency> currencies = currencyDao.getAllCurrencies();
+            if (!currencies.isEmpty()) {
+                view.getSourceCurrencyBox().getItems().addAll(currencies);
+                view.getTargetCurrencyBox().getItems().addAll(currencies);
+            } else {
+                view.showError("No currencies available.");
+            }
+        } catch (CurrencyDaoException e) {
+            view.showError("Unable to fetch currencies from the database: " + e.getMessage());
         }
     }
 

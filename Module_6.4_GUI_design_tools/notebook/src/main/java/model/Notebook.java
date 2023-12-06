@@ -18,6 +18,10 @@ public class Notebook {
         return notes;
     }
 
+    public void deleteNote(Note note) {
+        notes.remove(note);
+    }
+
     // Method to get a formatted String of all notes for display (if needed)
     public String getFormattedNotes() {
         StringBuilder sb = new StringBuilder();
@@ -29,4 +33,3 @@ public class Notebook {
         return sb.toString();
     }
 }
-

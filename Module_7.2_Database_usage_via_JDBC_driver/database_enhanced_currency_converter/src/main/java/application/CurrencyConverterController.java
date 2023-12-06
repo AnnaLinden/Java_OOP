@@ -1,21 +1,24 @@
 package application;
 
-
 import javafx.application.Application;
 import entity.Currency;
 import entity.CurrencyConverter;
 import UI.CurrencyConverterView;
+import dao.CurrencyDao;
+import java.util.List;
 
 public class CurrencyConverterController {
     private CurrencyConverterView view;
     private CurrencyConverter model;
 
+    private CurrencyDao currencyDao;
+
     public CurrencyConverterController(CurrencyConverterView view, CurrencyConverter model) {
         this.view = view;
         this.model = model;
+        this.currencyDao = new CurrencyDao();
 
         initializeCurrencies();
-        // Setup event handlers
         view.getConvertButton().setOnAction(event -> convertCurrency());
     }
 
@@ -24,6 +27,9 @@ public class CurrencyConverterController {
             double amount = Double.parseDouble(view.getSourceAmount().getText());
             Currency fromCurrency = view.getSourceCurrencyBox().getValue();
             Currency toCurrency = view.getTargetCurrencyBox().getValue();
+
+            double fromRate = currencyDao.getExchangeRate(fromCurrency.getAbbreviation());
+            double toRate = currencyDao.getExchangeRate(toCurrency.getAbbreviation());
 
             double convertedAmount = model.convert(amount, fromCurrency, toCurrency);
             view.getTargetAmount().setText(String.format("%.2f", convertedAmount));
@@ -37,12 +43,13 @@ public class CurrencyConverterController {
     }
 
     public void initializeCurrencies() {
-        Currency usd = new Currency("US Dollar", "USD", 1.0);
-        Currency eur = new Currency("Euro", "EUR", 1.12); // Example rate
-        Currency gbp = new Currency("British Pound", "GBP", 1.30); // Example rate
-
-        view.getSourceCurrencyBox().getItems().addAll(usd, eur, gbp);
-        view.getTargetCurrencyBox().getItems().addAll(usd, eur, gbp);
+        List<Currency> currencies = currencyDao.getAllCurrencies();
+        if (!currencies.isEmpty()) {
+            view.getSourceCurrencyBox().getItems().addAll(currencies);
+            view.getTargetCurrencyBox().getItems().addAll(currencies);
+        } else {
+            view.showError("Unable to fetch currencies from the database.");
+        }
     }
 
     // Main method to launch the application

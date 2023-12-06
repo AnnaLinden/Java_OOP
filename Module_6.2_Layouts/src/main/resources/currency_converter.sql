@@ -32,7 +32,7 @@ DROP USER IF EXISTS 'appuser'@'localhost';
 
 
 -- Create the user account
-CREATE USER 'appuser'@'localhost' IDENTIFIED BY 'your_password'; -- Replace with a secure password
+CREATE USER 'appuser'@'localhost' IDENTIFIED BY 'password'; -- Replace with a secure password
 
 -- Grant SELECT privilege to the appuser account
 GRANT SELECT ON currency_converter.* TO 'appuser'@'localhost';

@@ -1,9 +1,6 @@
 package controller;
 
 import javafx.fxml.FXML;
-
-import java.io.Console;
-
 import javafx.collections.FXCollections;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
@@ -22,7 +19,10 @@ public class NoteController {
     @FXML
     private TextArea contentArea;
     private Notebook notebook;
-
+    @FXML
+    private Button editButton;
+    @FXML
+    private Button deleteButton;
 
     public NoteController() {
         notebook = new Notebook();
@@ -44,11 +44,23 @@ public class NoteController {
             }
 
         });
+        // Disable buttons initially
+        editButton.setDisable(true);
+        deleteButton.setDisable(true);
 
         // Add selection change listener
 
+        // Enable/Disable buttons based on whether a note is selected
         notesListView.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> showNoteDetails(newValue));
+                (observable, oldValue, newValue) -> {
+                    boolean isNoteSelected = newValue != null;
+                    editButton.setDisable(!isNoteSelected);
+                    deleteButton.setDisable(!isNoteSelected);
+
+                    if (isNoteSelected) {
+                        showNoteDetails(newValue); // Show details of the selected note
+                    }
+                });
     }
 
     private void showNoteDetails(Note note) {
@@ -58,7 +70,6 @@ public class NoteController {
             System.out.println("showNoteDetails: " + note.getTitle());
         }
     }
-
 
     @FXML
     private void onAdd() {
@@ -84,13 +95,17 @@ public class NoteController {
     private void onEdit() {
         Note selectedNote = notesListView.getSelectionModel().getSelectedItem();
         if (selectedNote != null) {
-            // Assuming you want to edit in the same text fields
-            titleField.setText(selectedNote.getTitle());
-            contentArea.setText(selectedNote.getContent());
+            selectedNote.setTitle(titleField.getText());
+            selectedNote.setContent(contentArea.getText());
 
-            // Optionally, you can add a state to distinguish between add and edit
+            // Refresh ListView to show updated note
+            notesListView.refresh();
+
+            // clear the fields
+            titleField.clear();
+            contentArea.clear();
         } else {
-            // Show error message or disable edit button when no note is selected
+            // Show an error message or log it
         }
     }
 
@@ -101,7 +116,7 @@ public class NoteController {
             notebook.deleteNote(selectedNote);
             notesListView.setItems(FXCollections.observableList(notebook.getNotes()));
         } else {
-            // Show error message or disable delete button when no note is selected
+            // The buttons are disabled when no note is selected, so nothing to do here.
         }
     }
 

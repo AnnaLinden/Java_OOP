@@ -51,8 +51,6 @@ public class CurrencyDao {
         }
     }
 
-    // You can add update and delete methods similarly if needed
-
     public static class CurrencyDaoException extends Exception {
         public CurrencyDaoException(String message) {
             super(message);

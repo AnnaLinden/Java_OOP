@@ -36,5 +36,8 @@ CREATE USER 'appuser'@'localhost' IDENTIFIED BY 'password'; -- Replace with a se
 
 -- Grant SELECT privilege to the appuser account
 GRANT SELECT ON currency_converter.* TO 'appuser'@'localhost';
+GRANT INSERT ON currency_converter.* TO 'appuser'@'localhost';
+FLUSH PRIVILEGES;
+
 
 

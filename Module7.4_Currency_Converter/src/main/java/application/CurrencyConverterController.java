@@ -43,8 +43,8 @@ public class CurrencyConverterController {
             view.getTargetAmount().setText(String.format("%.2f", convertedAmount));
 
             Transaction transaction = new Transaction();
-            transaction.setSourceCurrency(fromCurrency);
-            transaction.setTargetCurrency(toCurrency);
+            transaction.setSourceCurrencyAbbreviation(fromCurrency.getAbbreviation());
+            transaction.setTargetCurrencyAbbreviation(toCurrency.getAbbreviation());
             transaction.setAmount(amount);
             new TransactionDao().persist(transaction);
         } catch (NumberFormatException e) {
